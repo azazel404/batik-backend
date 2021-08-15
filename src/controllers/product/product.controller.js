@@ -6,7 +6,7 @@ const Op = Sequelize.Op;
 
 export const list = async (req, res) => {
 	try {
-		const result = await product.findAll({});
+		const result = await product.findAll({ include: ["categories"] });
 		return successResponse(req, res, "", result);
 	} catch (error) {
 		return errorResponse(req, res, error.message);
