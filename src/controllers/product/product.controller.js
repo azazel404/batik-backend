@@ -1,10 +1,27 @@
 import { product } from "../../models";
 import { successResponse, errorResponse } from "../../helpers";
 import UploadImage from "../../middleware/UploadImage";
+import Sequelize from "sequelize";
+const Op = Sequelize.Op;
 
 export const list = async (req, res) => {
 	try {
 		const result = await product.findAll({});
+		return successResponse(req, res, "", result);
+	} catch (error) {
+		return errorResponse(req, res, error.message);
+	}
+};
+
+export const productClient = async (req, res) => {
+	try {
+		const result = await product.findAll({
+			where: {
+				name: {
+					[Op.like]: "%" + req.body.search + "%",
+				},
+			},
+		});
 		return successResponse(req, res, "", result);
 	} catch (error) {
 		return errorResponse(req, res, error.message);
@@ -19,7 +36,7 @@ export const create = async (req, res) => {
 			code,
 			name,
 			price,
-			image: req.file && `${process.env.URLFILE}/images/${req.file.filename}`,
+			image: req.file && `/images/${req.file.filename}`,
 			description,
 			category_id,
 			stock,
@@ -44,7 +61,7 @@ export const update = async (req, res) => {
 			code,
 			name,
 			price,
-			image: image ? image : `${process.env.URLFILE}/images/${req.file.filename}`,
+			image: image ? image : `/images/${req.file.filename}`,
 			description,
 			category_id,
 			stock,

@@ -83,7 +83,6 @@ export const register = async (req, res) => {
 		const reqPass = crypto.createHash("md5").update(password).digest("hex");
 		const payload = {
 			name,
-			password,
 			address,
 			email,
 			phone_number,
