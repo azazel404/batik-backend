@@ -18,6 +18,7 @@ router.post("/products", apiMiddleware, productController.productClient);
 router.post("/order", apiMiddleware, ordersController.getCurrentOrder);
 router.post("/create-order", apiMiddleware, ordersController.create);
 router.post("/bulk-order", apiMiddleware, ordersController.bulkOrder);
+router.put("/update-order/:id", apiMiddleware, ordersController.update);
 router.post("/cancel-order/:id", ordersController.cancelOrder);
 router.get("/category/list", apiMiddleware, categoryController.list);
 

@@ -16,6 +16,7 @@ export const list = async (req, res) => {
 export const productClient = async (req, res) => {
 	try {
 		const result = await product.findAll({
+			include: ["categories"],
 			where: {
 				name: {
 					[Op.like]: "%" + req.body.search + "%",

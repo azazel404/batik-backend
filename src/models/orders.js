@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
 			end_date: DataTypes.DATE,
 			trans_date: DataTypes.DATE,
 			qty: DataTypes.INTEGER,
+			resi: DataTypes.STRING,
 			document: DataTypes.STRING,
 			status: DataTypes.STRING,
 		},
