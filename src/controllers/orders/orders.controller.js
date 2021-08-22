@@ -33,7 +33,7 @@ export const create = async (req, res) => {
 			end_date,
 			trans_date,
 			qty,
-			// document,
+			// image,
 			status,
 		} = req.body;
 		const payload = {
@@ -45,7 +45,7 @@ export const create = async (req, res) => {
 			end_date,
 			trans_date,
 			qty,
-			// document,
+			// image,
 			status,
 		};
 		const created = await orders.create(payload);
@@ -117,6 +117,7 @@ export const bulkOrder = async (req, res) => {
 };
 
 export const update = async (req, res) => {
+	console.log("req", req.file);
 	try {
 		const {
 			// code,
@@ -127,7 +128,6 @@ export const update = async (req, res) => {
 			// start_date,
 			// end_date,
 			// trans_date,
-			document,
 			status,
 		} = req.body;
 		const payload = {
@@ -139,7 +139,7 @@ export const update = async (req, res) => {
 			// start_date,
 			// end_date,
 			// trans_date,
-			document,
+			image: req.file && `/images/${req.file.filename}`,
 			status,
 		};
 

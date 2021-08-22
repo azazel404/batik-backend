@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
 			trans_date: DataTypes.DATE,
 			qty: DataTypes.INTEGER,
 			resi: DataTypes.STRING,
-			document: DataTypes.STRING,
+			image: DataTypes.STRING,
 			status: DataTypes.STRING,
 		},
 		{}

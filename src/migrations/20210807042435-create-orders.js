@@ -32,7 +32,7 @@ module.exports = {
 			qty: {
 				type: Sequelize.INTEGER,
 			},
-			document: {
+			image: {
 				type: Sequelize.STRING,
 			},
 			status: {

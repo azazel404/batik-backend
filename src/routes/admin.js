@@ -12,16 +12,6 @@ const router = express.Router();
 import UploadImage from "../middleware/UploadImage";
 // import {localUpload} from "../middleware/multer";
 
-// // menentukan lokasi pengunggahan
-// const diskStorage = multer.diskStorage({
-// 	destination: function (req, file, cb) {
-// 		cb(null, path.join(__dirname, "src/public/images"));
-// 	},
-// 	filename: function (req, file, cb) {
-// 		cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname));
-// 	},
-// });
-
 //= ===============================
 // Admin routes
 //= ===============================

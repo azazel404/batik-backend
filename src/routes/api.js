@@ -9,7 +9,7 @@ import * as categoryController from "../controllers/category/category.controller
 import * as cartController from "../controllers/cart/cart.controller";
 
 const router = express.Router();
-
+import UploadImage from "../middleware/UploadImage";
 //= ===============================
 // API routes
 //= ===============================
@@ -18,7 +18,12 @@ router.post("/products", apiMiddleware, productController.productClient);
 router.post("/order", apiMiddleware, ordersController.getCurrentOrder);
 router.post("/create-order", apiMiddleware, ordersController.create);
 router.post("/bulk-order", apiMiddleware, ordersController.bulkOrder);
-router.put("/update-order/:id", apiMiddleware, ordersController.update);
+router.put(
+	"/update-order/:id",
+	UploadImage.single("image"),
+	apiMiddleware,
+	ordersController.update
+);
 router.post("/cancel-order/:id", ordersController.cancelOrder);
 router.get("/category/list", apiMiddleware, categoryController.list);
 
